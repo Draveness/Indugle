@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.0.1)
+  - MBProgressHUD (1.0.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SnapKit (3.0.2)
+  - SVPullToRefresh (0.4.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - MBProgressHUD
+  - SDWebImage
+  - SnapKit
+  - SVPullToRefresh
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+
+PODFILE CHECKSUM: 39ba80f95ca3e8a97e961751b7cf6aae0fff73b6
+
+COCOAPODS: 1.1.1
