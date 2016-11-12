@@ -10,4 +10,5 @@ target 'Overload' do
   pod 'SnapKit'
   pod 'MBProgressHUD'
   pod 'SVPullToRefresh'
+  pod 'Charts'
 end
