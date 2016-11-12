@@ -88,6 +88,10 @@ class DetailViewController: UIViewController {
         $0.clipsToBounds = true
     }
 
+    func confirmOrder() {
+        navigationController?.pushViewController(ConfirmOrderViewController(), animated: true)
+    }
+
     let borderLineView = UIView().then {
         $0.backgroundColor = UIColor.lightGray
     }
@@ -106,6 +110,8 @@ class DetailViewController: UIViewController {
         title = "叫花鸡"
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
+
+        submitOrderButton.addTarget(self, action: #selector(confirmOrder), for: .touchUpInside)
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

@@ -22,6 +22,7 @@
 		72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */; };
 		72D62E0A1DD75237009189A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D62E091DD75237009189A9 /* Assets.xcassets */; };
 		72D62E0C1DD76414009189A9 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E0B1DD76414009189A9 /* World.swift */; };
+		72D62E0F1DD773B0009189A9 /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		72D62E091DD75237009189A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72D62E0B1DD76414009189A9 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
 		DAD3D53C9183934F7CBE3678 /* Pods_Overload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Overload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 				72D62E011DD70529009189A9 /* SceneViewController.swift */,
 				72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */,
 				72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */,
+				72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */,
 				72D62E031DD7062E009189A9 /* StarView.swift */,
 				72D62E091DD75237009189A9 /* Assets.xcassets */,
 				72A36B9F1DD4C31F009579A4 /* Info.plist */,
@@ -263,6 +266,7 @@
 				72D62E0C1DD76414009189A9 /* World.swift in Sources */,
 				72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */,
 				72D62E041DD7062E009189A9 /* StarView.swift in Sources */,
+				72D62E0F1DD773B0009189A9 /* ConfirmOrderViewController.swift in Sources */,
 				72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */,
 				72A36BA81DD6A869009579A4 /* WebViewController.swift in Sources */,
 				72D62DFD1DD6ED0E009189A9 /* DetailViewController.swift in Sources */,
