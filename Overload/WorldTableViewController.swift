@@ -17,6 +17,7 @@ class WorldTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor(hex: 0xF9F9F9)
         tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     // MARK: - UITableViewDataSource

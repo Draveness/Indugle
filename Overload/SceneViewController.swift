@@ -11,6 +11,7 @@ import UIKit
 class SceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
@@ -100,13 +101,8 @@ class SceneCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath.row)")
+        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
     }
-
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        let targetRect = CGRect(x: scrollView.contentOffset.x, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
-        let indexPath = collectionView?.indexPathForItem(at: CGPoint(x: scrollView.contentOffset.x, y: 0))
-    }
-
 }
 
 class SceneCollectionViewCell: UICollectionViewCell {

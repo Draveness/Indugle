@@ -16,18 +16,20 @@ import DynamicColor
 import Then
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelegate {
 
     var window: UIWindow?
 
+    let navigation = UINavigationController(rootViewController: WorldTableViewController())
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        application.setStatusBarStyle(.lightContent, animated: false)
 
-        let navigation = UINavigationController(rootViewController: WorldTableViewController())
 //        let navigation = UINavigationController(rootViewController: VideoViewController())
         navigation.navigationBar.barTintColor = UIColor(hex: 0xF9F9F9)
         navigation.navigationBar.isTranslucent = false
+        navigation.navigationBar.tintColor = UIColor.black
+        navigation.interactivePopGestureRecognizer?.delegate = self
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
@@ -41,5 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) { }
     func applicationDidBecomeActive(_ application: UIApplication) { }
     func applicationWillTerminate(_ application: UIApplication) { }
+
+    // MARK: - UIGestureRecognizerDelegate
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigation.viewControllers.count > 1
+    }
 }
 

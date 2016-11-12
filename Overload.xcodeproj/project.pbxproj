@@ -19,10 +19,9 @@
 		72A36BB01DD6CDCF009579A4 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */; };
 		72A36BB21DD6CE2A009579A4 /* WorldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */; };
 		72D62DFD1DD6ED0E009189A9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */; };
-		72D62DFF1DD6EDCA009189A9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62DFE1DD6EDCA009189A9 /* MenuTableViewController.swift */; };
 		72D62E021DD70529009189A9 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E011DD70529009189A9 /* SceneViewController.swift */; };
 		72D62E041DD7062E009189A9 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E031DD7062E009189A9 /* StarView.swift */; };
-		72D62E061DD71801009189A9 /* WeChatSight6.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 72D62E051DD71772009189A9 /* WeChatSight6.mp4 */; };
+		72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,10 +40,9 @@
 		72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
 		72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewCell.swift; sourceTree = "<group>"; };
 		72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		72D62DFE1DD6EDCA009189A9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		72D62E011DD70529009189A9 /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		72D62E031DD7062E009189A9 /* StarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
-		72D62E051DD71772009189A9 /* WeChatSight6.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeChatSight6.mp4; sourceTree = "<group>"; };
+		72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		DAD3D53C9183934F7CBE3678 /* Pods_Overload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Overload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,12 +95,10 @@
 				72A36B9F1DD4C31F009579A4 /* Info.plist */,
 				72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */,
 				72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */,
-				72A36BAD1DD6CAB6009579A4 /* WorldViewController.swift */,
 				72D62E011DD70529009189A9 /* SceneViewController.swift */,
+				72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */,
 				72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */,
-				72D62DFE1DD6EDCA009189A9 /* MenuTableViewController.swift */,
 				72D62E031DD7062E009189A9 /* StarView.swift */,
-				72D62E051DD71772009189A9 /* WeChatSight6.mp4 */,
 			);
 			path = Overload;
 			sourceTree = "<group>";
@@ -110,6 +106,7 @@
 		72D62E001DD6FD65009189A9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				72A36BAD1DD6CAB6009579A4 /* WorldViewController.swift */,
 				72A36BA51DD6A67F009579A4 /* VideoViewController.swift */,
 				72A36BA71DD6A869009579A4 /* WebViewController.swift */,
 				72A36BAB1DD6BED8009579A4 /* MapViewController.swift */,
@@ -189,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72D62E061DD71801009189A9 /* WeChatSight6.mp4 in Resources */,
 				72A36B9E1DD4C31F009579A4 /* LaunchScreen.storyboard in Resources */,
 				72A36B9B1DD4C31F009579A4 /* Assets.xcassets in Resources */,
 				72A36B991DD4C31F009579A4 /* Main.storyboard in Resources */,
@@ -255,11 +251,11 @@
 				72A36B941DD4C31F009579A4 /* AppDelegate.swift in Sources */,
 				72A36BA61DD6A67F009579A4 /* VideoViewController.swift in Sources */,
 				72A36BB21DD6CE2A009579A4 /* WorldTableViewCell.swift in Sources */,
-				72D62DFF1DD6EDCA009189A9 /* MenuTableViewController.swift in Sources */,
 				72D62E021DD70529009189A9 /* SceneViewController.swift in Sources */,
 				72A36BAE1DD6CAB6009579A4 /* WorldViewController.swift in Sources */,
 				72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */,
 				72D62E041DD7062E009189A9 /* StarView.swift in Sources */,
+				72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */,
 				72A36BA81DD6A869009579A4 /* WebViewController.swift in Sources */,
 				72D62DFD1DD6ED0E009189A9 /* DetailViewController.swift in Sources */,
 			);

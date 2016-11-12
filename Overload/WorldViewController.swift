@@ -47,7 +47,7 @@ class WorldViewController: UIViewController {
     func detailButtonClicked(btn: UIButton) {
         print("Detail Button Touched")
 
-        let menuViewController = MenuTableViewController()
-        navigationController?.pushViewController(menuViewController, animated: true)
+//        let menuViewController = MenuTableViewController()
+//        navigationController?.pushViewController(menuViewController, animated: true)
     }
 }
