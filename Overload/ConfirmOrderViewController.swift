@@ -147,14 +147,15 @@ class ConfirmOrderViewController: UIViewController {
     }
 
     func checkout() {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        let hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
         hud.label.text = "正在支付"
         hud.mode = .indeterminate
         hud.hide(animated: true, afterDelay: 2.0)
-
+        hud.backgroundView.color = UIColor(white: 0, alpha: 0.5)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            let hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
+            hud.backgroundView.color = UIColor(white: 0, alpha: 0.5)
             hud.label.text = "支付成功"
             hud.mode = .customView
             hud.customView = UIImageView(image: #imageLiteral(resourceName: "check-mark"))
