@@ -18,6 +18,7 @@ class MenuCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "菜单"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         collectionView!.register(RecipientCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.backgroundColor = UIColor.white

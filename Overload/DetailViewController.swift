@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     }
     let contentView = UIView()
 
-
     // MAKR: - Description
 
     let descView = UIView().then {
@@ -207,16 +206,20 @@ class DetailViewController: UIViewController {
             make.centerY.equalTo(submitOrderButton)
         }
 
+        let verticalSpace = 18
+        let horizontalSpace = 16
+
         logoImageView.snp.makeConstraints { (make) in
             make.width.equalTo(logoImageView.snp.height)
-            make.top.bottom.equalTo(18)
-            make.left.equalTo(25)
+            make.top.equalTo(horizontalSpace)
+            make.bottom.equalTo(-horizontalSpace)
+            make.left.equalTo(verticalSpace)
         }
 
         horizontalLineView.snp.makeConstraints { (make) in
             make.width.equalTo(0.5)
             make.height.equalToSuperview()
-            make.left.equalTo(60)
+            make.left.equalTo(logoImageView.snp.right).offset(verticalSpace)
             make.centerY.equalToSuperview()
         }
     }

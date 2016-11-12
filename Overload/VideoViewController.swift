@@ -17,7 +17,7 @@ class VideoViewController: UIViewController {
 
         let localURL = Bundle.main.url(forResource: "WeChatSight6", withExtension: "mp4")
 
-        let url = URL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")
+        _ = URL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")
         let player = AVPlayer(url: localURL!)
         let playerController = AVPlayerViewController()
 

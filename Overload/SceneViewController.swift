@@ -18,12 +18,11 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
 
         let config = WKWebViewConfiguration()
         config.userContentController.add(self, name: "handleClick")
-//        let webView = UIWebView()
         let webView = WKWebView(frame: view.frame, configuration: config)
         webView.load(URLRequest(url: URL(string: "http://10.97.194.14:8080/hack/artworld.html")!))
-//        webView.loadRequest(URLRequest(url: URL(string: "http://10.97.194.14:8080/hack/artworld.html")!))
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(pushMenuViewController))
 
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
@@ -36,7 +35,6 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
 
         webView.snp.makeConstraints { (make) in
             make.top.equalTo(view)
-//            make.bottom.equalTo(sceneVC.view.snp.top)
             make.left.right.bottom.equalToSuperview()
         }
         sceneVC.view.snp.makeConstraints { (make) in
@@ -44,6 +42,13 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
             make.height.equalTo(174)
         }
     }
+
+
+    func pushMenuViewController() {
+        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
+    }
+
+    // MARK: WKScriptMessageHandler
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print(message.body)
@@ -96,7 +101,6 @@ class SceneFlowLayout: UICollectionViewFlowLayout {
 
         return resultPoint
     }
-
 }
 
 class SceneCollectionViewController: UICollectionViewController {
@@ -128,10 +132,8 @@ class SceneCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
-//        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
         webView.evaluateJavaScript("Module.flyToScene(\(indexPath.row))", completionHandler: { result, error in
-            print("\(result) \(error)")
+//            print("\(result) \(error)")
         })
     }
 }
