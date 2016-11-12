@@ -15,6 +15,7 @@
 		72A36B9E1DD4C31F009579A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72A36B9C1DD4C31F009579A4 /* LaunchScreen.storyboard */; };
 		72A36BA61DD6A67F009579A4 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BA51DD6A67F009579A4 /* VideoViewController.swift */; };
 		72A36BA81DD6A869009579A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BA71DD6A869009579A4 /* WebViewController.swift */; };
+		72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BAB1DD6BED8009579A4 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		72A36B9F1DD4C31F009579A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72A36BA51DD6A67F009579A4 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		72A36BA71DD6A869009579A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		72A36BAB1DD6BED8009579A4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DAD3D53C9183934F7CBE3678 /* Pods_Overload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Overload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 				72A36B9F1DD4C31F009579A4 /* Info.plist */,
 				72A36BA51DD6A67F009579A4 /* VideoViewController.swift */,
 				72A36BA71DD6A869009579A4 /* WebViewController.swift */,
+				72A36BAB1DD6BED8009579A4 /* MapViewController.swift */,
 			);
 			path = Overload;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				72A36B961DD4C31F009579A4 /* ViewController.swift in Sources */,
 				72A36B941DD4C31F009579A4 /* AppDelegate.swift in Sources */,
 				72A36BA61DD6A67F009579A4 /* VideoViewController.swift in Sources */,
+				72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */,
 				72A36BA81DD6A869009579A4 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
