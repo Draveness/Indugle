@@ -12,6 +12,8 @@ import SDWebImage
 import SnapKit
 import MBProgressHUD
 import SVPullToRefresh
+import DynamicColor
+import Then
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,9 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        application.setStatusBarStyle(.lightContent, animated: false)
+
+        let navigation = UINavigationController(rootViewController: WorldTableViewController())
+//        let navigation = UINavigationController(rootViewController: VideoViewController())
+        navigation.navigationBar.barTintColor = UIColor(hex: 0xF9F9F9)
+        navigation.navigationBar.isTranslucent = false
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = WebViewController(url: "http://baidu.com")
+        window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         return true
     }

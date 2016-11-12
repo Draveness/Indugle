@@ -10,5 +10,10 @@ target 'Overload' do
   pod 'SnapKit'
   pod 'MBProgressHUD'
   pod 'SVPullToRefresh'
-  pod 'Charts'
+  pod 'DynamicColor', '~> 3.1.0'
+#  pod 'GPUImage'
+  pod 'Then'
+
+  pod 'Cosmos', '~> 7.0'
+
 end
