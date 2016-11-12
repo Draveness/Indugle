@@ -15,6 +15,8 @@ import SVPullToRefresh
 import DynamicColor
 import Then
 
+let baseURL = "http://172.16.27.29:8080"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelegate {
 
@@ -27,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelega
         navigation.navigationBar.isTranslucent = false
         navigation.navigationBar.tintColor = UIColor.black
         navigation.interactivePopGestureRecognizer?.delegate = self
-
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white

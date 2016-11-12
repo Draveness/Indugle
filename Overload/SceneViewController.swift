@@ -8,8 +8,13 @@
 
 import UIKit
 import WebKit
+import Alamofire
+import SwiftyJSON
 
-class SceneViewController: UIViewController, WKScriptMessageHandler {
+class SceneViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
+
+    var world: World!
+    var scenes: [Scene] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +24,8 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
         let config = WKWebViewConfiguration()
         config.userContentController.add(self, name: "handleClick")
         let webView = WKWebView(frame: view.frame, configuration: config)
-        webView.load(URLRequest(url: URL(string: "http://10.97.194.14:8080/hack/artworld.html")!))
+        webView.navigationDelegate = self
+        webView.load(URLRequest(url: URL(string: "\(baseURL)/hack/artworld.html")!))
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(pushMenuViewController))
@@ -39,26 +45,72 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
         }
         sceneVC.view.snp.makeConstraints { (make) in
             make.bottom.left.right.equalTo(0)
-            make.height.equalTo(174)
+            make.height.equalTo(120)
+        }
+
+        Alamofire.request("\(baseURL)/hack/web/Scene/list.do", method: .get, parameters: ["data": ["cond": ["world_id": world.id]]], encoding: URLEncoding.queryString, headers: nil).responseJSON { response in
+
+            if let data = response.data {
+                let json = JSON(data: data)
+                let lists = json["M"]["docs"].arrayValue
+
+                self.scenes = lists.map { json in
+                    Scene(json: json)
+                }
+
+                print(self.scenes)
+                sceneVC.scenes = self.scenes
+                sceneVC.collectionView?.reloadData()
+            }
         }
     }
 
 
     func pushMenuViewController() {
         navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
+//        let eventVC = EventViewController()
+//        let event = scenes.first?.events.first
+//        eventVC.eventId = event
+//        navigationController?.pushViewController(eventVC, animated: true)
     }
 
     // MARK: WKScriptMessageHandler
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print(message.body)
+        if let eventId = message.body as? Int {
+            print(eventId)
+            let eventVC = EventViewController()
+//            let event = scenes.first?.events.first
+
+            let events: [Event] = scenes.flatMap {
+                $0.events
+            }
+
+            events.forEach({ (event) in
+                if event.id == eventId {
+                    eventVC.event = event
+                    navigationController?.pushViewController(eventVC, animated: true)
+                }
+            })
+
+        }
     }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print(error)
+    }
+
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("commit")
+    }
+
 }
 
 class SceneFlowLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
-        self.itemSize = CGSize(width: 155, height: 174)
+        self.itemSize = CGSize(width: 125, height: 120)
         self.minimumLineSpacing = 10
         self.minimumInteritemSpacing = 10
         self.scrollDirection = .horizontal
@@ -72,7 +124,7 @@ class SceneFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return proposedContentOffset }
 
         var offsetAdjustment: CGFloat = CGFloat(FLT_MAX)
-        let horizontalOffset = proposedContentOffset.x + 24
+        let horizontalOffset = proposedContentOffset.x + 12
 
         let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
         let array = super.layoutAttributesForElements(in: targetRect)
@@ -105,12 +157,13 @@ class SceneFlowLayout: UICollectionViewFlowLayout {
 
 class SceneCollectionViewController: UICollectionViewController {
     weak var webView: WKWebView!
+    var scenes: [Scene] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor(hex: 0x000000).withAlphaComponent(0.7)
         collectionView?.register(SceneCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
     }
@@ -120,20 +173,21 @@ class SceneCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return scenes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SceneCollectionViewCell
-
-        cell.recipientCountLabel.text = "#\(indexPath.row)"
-
+        let scene = scenes[indexPath.row]
+        cell.sceneImageView.sd_setImage(with: scene.thumbnail)
+        cell.sceneNameLabel.text = scene.title
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        webView.evaluateJavaScript("Module.flyToScene(\(indexPath.row))", completionHandler: { result, error in
-//            print("\(result) \(error)")
+        let scene = scenes[indexPath.row]
+        webView.evaluateJavaScript("Module.flyToScene(\(scene.id))", completionHandler: { result, error in
+            print("\(result) \(error)")
         })
     }
 }
@@ -146,15 +200,8 @@ class SceneCollectionViewCell: UICollectionViewCell {
 
     let sceneNameLabel = UILabel().then {
         $0.text = "西部世界"
-        $0.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightUltraLight)
-        $0.textAlignment = .right
-        $0.textColor = UIColor.white
-    }
-
-    let recipientCountLabel = UILabel().then {
-        $0.text = "#24"
-        $0.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
-        $0.textAlignment = .left
+        $0.font = UIFont.systemFont(ofSize: 12.0, weight: UIFontWeightUltraLight)
+        $0.textAlignment = .center
         $0.textColor = UIColor.white
     }
 
@@ -168,26 +215,19 @@ class SceneCollectionViewCell: UICollectionViewCell {
 
         contentView.addSubview(sceneImageView)
         contentView.addSubview(sceneNameLabel)
-        contentView.addSubview(recipientCountLabel)
         contentView.addSubview(indicatorView)
 
         sceneImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(20)
-            make.height.equalTo(110)
-            make.width.equalTo(155)
+            make.top.equalTo(10)
+            make.height.equalTo(80)
+            make.width.equalTo(125)
             make.centerX.equalToSuperview()
         }
 
         sceneNameLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview()
+            make.centerX.equalToSuperview()
             make.height.equalTo(14)
-            make.bottom.equalTo(-20)
-        }
-
-        recipientCountLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.height.equalTo(sceneNameLabel)
-            make.bottom.equalTo(sceneNameLabel)
+            make.top.equalTo(sceneImageView.snp.bottom).offset(5)
         }
 
         indicatorView.snp.makeConstraints { (make) in

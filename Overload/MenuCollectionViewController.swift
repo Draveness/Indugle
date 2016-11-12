@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 private let reuseIdentifier = "Cell"
 
@@ -16,6 +18,8 @@ class MenuCollectionViewController: UICollectionViewController {
         self.init(collectionViewLayout: MenuFlowLayout())
     }
 
+    var meals: [Meal] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "菜单"
@@ -23,6 +27,19 @@ class MenuCollectionViewController: UICollectionViewController {
         collectionView!.register(RecipientCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.backgroundColor = UIColor.white
         collectionView?.contentInset = UIEdgeInsetsMake(15, 15, 15, 15)
+
+        Alamofire.request("http://172.16.27.29:8080/hack/web/Event/foodlist.do", method: .get, parameters: ["keyword": "叫花鸡"], encoding:  URLEncoding.default, headers: nil).responseJSON { (response) in
+            if let data = response.data {
+                let json = JSON(data: data)
+                let lists = json["M"]["docs"].arrayValue
+
+                self.meals = lists.map { json in
+                    Meal(json: json)
+                }
+
+                print(self.meals)
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -37,7 +54,7 @@ class MenuCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        
         return cell
     }
 

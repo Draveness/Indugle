@@ -23,6 +23,8 @@
 		72D62E0A1DD75237009189A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D62E091DD75237009189A9 /* Assets.xcassets */; };
 		72D62E0C1DD76414009189A9 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E0B1DD76414009189A9 /* World.swift */; };
 		72D62E0F1DD773B0009189A9 /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */; };
+		72D62E111DD78904009189A9 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E101DD78904009189A9 /* EventViewController.swift */; };
+		72D62E131DD78D5D009189A9 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E121DD78D5C009189A9 /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		72D62E091DD75237009189A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72D62E0B1DD76414009189A9 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
+		72D62E101DD78904009189A9 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		72D62E121DD78D5C009189A9 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DAD3D53C9183934F7CBE3678 /* Pods_Overload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Overload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +100,7 @@
 				72A36B931DD4C31F009579A4 /* AppDelegate.swift */,
 				72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */,
 				72D62E011DD70529009189A9 /* SceneViewController.swift */,
+				72D62E101DD78904009189A9 /* EventViewController.swift */,
 				72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */,
 				72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */,
 				72D62E0E1DD773B0009189A9 /* ConfirmOrderViewController.swift */,
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				72D62E0B1DD76414009189A9 /* World.swift */,
+				72D62E121DD78D5C009189A9 /* Scene.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,7 +266,9 @@
 			files = (
 				72A36BB01DD6CDCF009579A4 /* WorldTableViewController.swift in Sources */,
 				72A36B941DD4C31F009579A4 /* AppDelegate.swift in Sources */,
+				72D62E111DD78904009189A9 /* EventViewController.swift in Sources */,
 				72A36BA61DD6A67F009579A4 /* VideoViewController.swift in Sources */,
+				72D62E131DD78D5D009189A9 /* Scene.swift in Sources */,
 				72D62E021DD70529009189A9 /* SceneViewController.swift in Sources */,
 				72A36BAE1DD6CAB6009579A4 /* WorldViewController.swift in Sources */,
 				72D62E0C1DD76414009189A9 /* World.swift in Sources */,
@@ -395,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3K6KFK9N76;
 				INFOPLIST_FILE = Overload/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.draveness.Overload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,6 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3K6KFK9N76;
 				INFOPLIST_FILE = Overload/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.draveness.Overload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
