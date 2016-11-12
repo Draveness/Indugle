@@ -14,17 +14,21 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "射雕英雄世界"
+
         let config = WKWebViewConfiguration()
         config.userContentController.add(self, name: "handleClick")
+//        let webView = UIWebView()
         let webView = WKWebView(frame: view.frame, configuration: config)
-        webView.load(URLRequest(url: URL(string: "http://baidu.com")!))
-
+        webView.load(URLRequest(url: URL(string: "http://10.97.194.14:8080/hack/artworld.html")!))
+//        webView.loadRequest(URLRequest(url: URL(string: "http://10.97.194.14:8080/hack/artworld.html")!))
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
         let sceneVC = SceneCollectionViewController(collectionViewLayout: SceneFlowLayout())
+        sceneVC.webView = webView
         addChildViewController(sceneVC)
 
         view.addSubview(webView)
@@ -32,8 +36,8 @@ class SceneViewController: UIViewController, WKScriptMessageHandler {
 
         webView.snp.makeConstraints { (make) in
             make.top.equalTo(view)
-            make.bottom.equalTo(sceneVC.view.snp.top)
-            make.left.right.equalToSuperview()
+//            make.bottom.equalTo(sceneVC.view.snp.top)
+            make.left.right.bottom.equalToSuperview()
         }
         sceneVC.view.snp.makeConstraints { (make) in
             make.bottom.left.right.equalTo(0)
@@ -96,9 +100,11 @@ class SceneFlowLayout: UICollectionViewFlowLayout {
 }
 
 class SceneCollectionViewController: UICollectionViewController {
+    weak var webView: WKWebView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor(hex: 0x000000).withAlphaComponent(0.7)
         collectionView?.register(SceneCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         collectionView?.showsHorizontalScrollIndicator = false
@@ -114,32 +120,40 @@ class SceneCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SceneCollectionViewCell
+
+        cell.recipientCountLabel.text = "#\(indexPath.row)"
 
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath.row)")
-        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
+//        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
+        webView.evaluateJavaScript("Module.flyToScene(\(indexPath.row))", completionHandler: { result, error in
+            print("\(result) \(error)")
+        })
     }
 }
 
 class SceneCollectionViewCell: UICollectionViewCell {
     let sceneImageView = UIImageView().then {
         $0.image = #imageLiteral(resourceName: "westworld")
+        $0.alpha = 0.7
     }
 
     let sceneNameLabel = UILabel().then {
         $0.text = "西部世界"
         $0.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightUltraLight)
         $0.textAlignment = .right
+        $0.textColor = UIColor.white
     }
 
     let recipientCountLabel = UILabel().then {
         $0.text = "#24"
         $0.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
         $0.textAlignment = .left
+        $0.textColor = UIColor.white
     }
 
     let indicatorView = UIView().then {

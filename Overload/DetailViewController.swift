@@ -209,13 +209,14 @@ class DetailViewController: UIViewController {
 
         logoImageView.snp.makeConstraints { (make) in
             make.width.equalTo(logoImageView.snp.height)
-            make.left.top.bottom.equalToSuperview()
+            make.top.bottom.equalTo(18)
+            make.left.equalTo(25)
         }
 
         horizontalLineView.snp.makeConstraints { (make) in
             make.width.equalTo(0.5)
-            make.height.equalTo(logoImageView)
-            make.left.equalTo(logoImageView.snp.right)
+            make.height.equalToSuperview()
+            make.left.equalTo(60)
             make.centerY.equalToSuperview()
         }
     }

@@ -23,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelega
     let navigation = UINavigationController(rootViewController: WorldTableViewController())
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        application.setStatusBarStyle(.lightContent, animated: false)
-
-//        let navigation = UINavigationController(rootViewController: VideoViewController())
         navigation.navigationBar.barTintColor = UIColor(hex: 0xF9F9F9)
         navigation.navigationBar.isTranslucent = false
         navigation.navigationBar.tintColor = UIColor.black

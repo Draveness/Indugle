@@ -16,4 +16,5 @@ target 'Overload' do
 
   pod 'Cosmos', '~> 7.0'
 
+  pod 'SwiftyJSON'
 end

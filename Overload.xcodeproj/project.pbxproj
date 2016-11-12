@@ -16,12 +16,12 @@
 		72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BAB1DD6BED8009579A4 /* MapViewController.swift */; };
 		72A36BAE1DD6CAB6009579A4 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BAD1DD6CAB6009579A4 /* WorldViewController.swift */; };
 		72A36BB01DD6CDCF009579A4 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */; };
-		72A36BB21DD6CE2A009579A4 /* WorldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */; };
 		72D62DFD1DD6ED0E009189A9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */; };
 		72D62E021DD70529009189A9 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E011DD70529009189A9 /* SceneViewController.swift */; };
 		72D62E041DD7062E009189A9 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E031DD7062E009189A9 /* StarView.swift */; };
 		72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */; };
 		72D62E0A1DD75237009189A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D62E091DD75237009189A9 /* Assets.xcassets */; };
+		72D62E0C1DD76414009189A9 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D62E0B1DD76414009189A9 /* World.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,12 +37,12 @@
 		72A36BAB1DD6BED8009579A4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		72A36BAD1DD6CAB6009579A4 /* WorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
 		72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
-		72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTableViewCell.swift; sourceTree = "<group>"; };
 		72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		72D62E011DD70529009189A9 /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		72D62E031DD7062E009189A9 /* StarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		72D62E091DD75237009189A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72D62E0B1DD76414009189A9 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		DAD3D53C9183934F7CBE3678 /* Pods_Overload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Overload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +71,8 @@
 			children = (
 				72A36B921DD4C31F009579A4 /* Overload */,
 				72A36B911DD4C31F009579A4 /* Products */,
+				72A36B971DD4C31F009579A4 /* Main.storyboard */,
+				72A36B9C1DD4C31F009579A4 /* LaunchScreen.storyboard */,
 				B466FA07DA2EC220ED40E5B1 /* Pods */,
 				6FFEFE78FDC0595C24303DDE /* Frameworks */,
 			);
@@ -87,18 +89,16 @@
 		72A36B921DD4C31F009579A4 /* Overload */ = {
 			isa = PBXGroup;
 			children = (
+				72D62E0D1DD76417009189A9 /* Model */,
 				72D62E001DD6FD65009189A9 /* Helper */,
 				72A36B931DD4C31F009579A4 /* AppDelegate.swift */,
-				72A36B971DD4C31F009579A4 /* Main.storyboard */,
-				72A36B9C1DD4C31F009579A4 /* LaunchScreen.storyboard */,
-				72A36B9F1DD4C31F009579A4 /* Info.plist */,
 				72A36BAF1DD6CDCF009579A4 /* WorldTableViewController.swift */,
-				72A36BB11DD6CE2A009579A4 /* WorldTableViewCell.swift */,
 				72D62E011DD70529009189A9 /* SceneViewController.swift */,
 				72D62E071DD7257F009189A9 /* MenuCollectionViewController.swift */,
 				72D62DFC1DD6ED0E009189A9 /* DetailViewController.swift */,
 				72D62E031DD7062E009189A9 /* StarView.swift */,
 				72D62E091DD75237009189A9 /* Assets.xcassets */,
+				72A36B9F1DD4C31F009579A4 /* Info.plist */,
 			);
 			path = Overload;
 			sourceTree = "<group>";
@@ -112,6 +112,14 @@
 				72A36BAB1DD6BED8009579A4 /* MapViewController.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		72D62E0D1DD76417009189A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72D62E0B1DD76414009189A9 /* World.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B466FA07DA2EC220ED40E5B1 /* Pods */ = {
@@ -250,9 +258,9 @@
 				72A36BB01DD6CDCF009579A4 /* WorldTableViewController.swift in Sources */,
 				72A36B941DD4C31F009579A4 /* AppDelegate.swift in Sources */,
 				72A36BA61DD6A67F009579A4 /* VideoViewController.swift in Sources */,
-				72A36BB21DD6CE2A009579A4 /* WorldTableViewCell.swift in Sources */,
 				72D62E021DD70529009189A9 /* SceneViewController.swift in Sources */,
 				72A36BAE1DD6CAB6009579A4 /* WorldViewController.swift in Sources */,
+				72D62E0C1DD76414009189A9 /* World.swift in Sources */,
 				72A36BAC1DD6BED8009579A4 /* MapViewController.swift in Sources */,
 				72D62E041DD7062E009189A9 /* StarView.swift in Sources */,
 				72D62E081DD7257F009189A9 /* MenuCollectionViewController.swift in Sources */,
@@ -270,6 +278,7 @@
 				72A36B981DD4C31F009579A4 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Overload;
 			sourceTree = "<group>";
 		};
 		72A36B9C1DD4C31F009579A4 /* LaunchScreen.storyboard */ = {
@@ -278,6 +287,7 @@
 				72A36B9D1DD4C31F009579A4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = Overload;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

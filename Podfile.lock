@@ -8,6 +8,7 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SnapKit (3.0.2)
   - SVPullToRefresh (0.4.1)
+  - SwiftyJSON (3.1.1)
   - Then (2.1.0)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - SDWebImage
   - SnapKit
   - SVPullToRefresh
+  - SwiftyJSON
   - Then
 
 SPEC CHECKSUMS:
@@ -28,8 +30,9 @@ SPEC CHECKSUMS:
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 7f7de8fc30ae9e684d6f0301cae7ad5f2b45b55a
+PODFILE CHECKSUM: 18c6726c5e4972ae0dae328a75b03659fc546c27
 
 COCOAPODS: 1.1.1
