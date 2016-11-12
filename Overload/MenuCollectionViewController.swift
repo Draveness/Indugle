@@ -20,6 +20,8 @@ class MenuCollectionViewController: UICollectionViewController {
 
     var meals: [Meal] = []
 
+    var keyword: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "菜单"
@@ -28,7 +30,7 @@ class MenuCollectionViewController: UICollectionViewController {
         collectionView?.backgroundColor = UIColor.white
         collectionView?.contentInset = UIEdgeInsetsMake(15, 15, 15, 15)
 
-        Alamofire.request("http://172.16.27.29:8080/hack/web/Event/foodlist.do", method: .get, parameters: ["keyword": "叫花鸡"], encoding:  URLEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(baseURL)/hack/web/Event/foodlist.do", method: .get, parameters: ["keyword": "100"], encoding:  URLEncoding.default, headers: nil).responseJSON { (response) in
             if let data = response.data {
                 let json = JSON(data: data)
                 let lists = json["M"]["docs"].arrayValue
@@ -37,6 +39,7 @@ class MenuCollectionViewController: UICollectionViewController {
                     Meal(json: json)
                 }
 
+                self.collectionView?.reloadData()
                 print(self.meals)
             }
         }
@@ -49,19 +52,27 @@ class MenuCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return meals.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
+
+        let meal = meals[indexPath.row]
+        cell.imageView.sd_setImage(with: meal.icon)
+        cell.nameLabel.text = meal.name
+        cell.descLabel.text = meal.desc
+        cell.priceLabel.text = "￥\(meal.price)"
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        let meal = meals[indexPath.row]
+        let detailVC = DetailViewController()
+        detailVC.meal = meal
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -98,6 +109,7 @@ class RecipientCollectionViewCell: UICollectionViewCell {
         $0.textColor = UIColor(hex: 0x45A096)
         $0.text = "￥219"
     }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 

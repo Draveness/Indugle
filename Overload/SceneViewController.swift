@@ -25,7 +25,7 @@ class SceneViewController: UIViewController, WKScriptMessageHandler, WKNavigatio
         config.userContentController.add(self, name: "handleClick")
         let webView = WKWebView(frame: view.frame, configuration: config)
         webView.navigationDelegate = self
-        webView.load(URLRequest(url: URL(string: "\(baseURL)/hack/artworld.html")!))
+        webView.load(URLRequest(url: URL(string: "\(baseURL)/hack/artworld.html#worldid=\(world.id)")!))
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(pushMenuViewController))
@@ -48,7 +48,8 @@ class SceneViewController: UIViewController, WKScriptMessageHandler, WKNavigatio
             make.height.equalTo(120)
         }
 
-        Alamofire.request("\(baseURL)/hack/web/Scene/list.do", method: .get, parameters: ["data": ["cond": ["world_id": world.id]]], encoding: URLEncoding.queryString, headers: nil).responseJSON { response in
+        Alamofire.request("\(baseURL)/hack/web/Scene/list.do", method: .get, parameters: ["world_id": world.id], encoding: URLEncoding.queryString, headers: nil).responseJSON { response in
+//            Alamofire.request("\(baseURL)/hack/web/Scene/list.do?data={\"cond\":{\"world_id\":2}}").responseJSON { response in
 
             if let data = response.data {
                 let json = JSON(data: data)

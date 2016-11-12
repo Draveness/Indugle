@@ -24,7 +24,7 @@ class WorldTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Multiverse"
+        title = "人文美食"
         tableView.register(WorldTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor(hex: 0xF9F9F9)

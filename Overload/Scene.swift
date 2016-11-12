@@ -44,7 +44,16 @@ struct Event {
 }
 
 struct Meal {
+    let id: Int
+    let name: String
+    let icon: URL
+    let desc: String
+    let price: Float
     init(json: JSON) {
-
+        self.id = json["eventid"].intValue
+        self.icon = URL(string: json["icon_url"].stringValue)!
+        self.price = json["price"].floatValue
+        self.desc =  json["description"].stringValue
+        self.name = json["name"].stringValue
     }
 }

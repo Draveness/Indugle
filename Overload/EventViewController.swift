@@ -37,7 +37,7 @@ class EventViewController: UIViewController {
 
     let introPromptLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
-        $0.text = "简介"
+        $0.text = "故事简介"
         $0.textColor = UIColor.darkGray
     }
 
@@ -62,6 +62,7 @@ class EventViewController: UIViewController {
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
         title = event.title
+        introLabel.text = event.text
         let player = AVPlayer(url: event.videoURL)
         let playerController = AVPlayerViewController()
 
@@ -131,7 +132,9 @@ class EventViewController: UIViewController {
     }
 
     func pushMenuViewController() {
-        navigationController?.pushViewController(MenuCollectionViewController(), animated: true)
+        let menuVC = MenuCollectionViewController()
+        menuVC.keyword = event.keyword
+        navigationController?.pushViewController(menuVC, animated: true)
     }
 
 }

@@ -11,6 +11,8 @@ import DynamicColor
 
 class DetailViewController: UIViewController {
 
+    var meal: Meal!
+
     let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
@@ -107,7 +109,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "叫花鸡"
+        title = meal.name
+        priceLabel.text = "￥\(meal.price)"
+        nameLabel.text = "\(meal.name) · \(meal.desc)"
+        itemImageView.sd_setImage(with: meal.icon)
+
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
