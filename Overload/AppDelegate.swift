@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelega
         navigation.navigationBar.tintColor = UIColor.black
         navigation.interactivePopGestureRecognizer?.delegate = self
 
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.rootViewController = navigation

@@ -11,8 +11,13 @@ import DynamicColor
 
 class DetailViewController: UIViewController {
 
-    let scrollView = UIScrollView()
+    let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     let contentView = UIView()
+
+
+    // MAKR: - Description
 
     let descView = UIView().then {
         $0.backgroundColor = UIColor.white
@@ -33,6 +38,8 @@ class DetailViewController: UIViewController {
         $0.textColor = UIColor(hex: 0x45A096)
         $0.text = "￥219"
     }
+
+    // MARK: - Detail
 
     let detailView = UIView().then {
         $0.backgroundColor = UIColor.white
@@ -57,12 +64,48 @@ class DetailViewController: UIViewController {
         $0.numberOfLines = 0
     }
 
+    // MAKR: - Function
+
+    let functionView = UIView().then {
+        $0.backgroundColor = UIColor.white
+    }
+
+    let addToCartButton = UIButton().then {
+        $0.backgroundColor = UIColor.black
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitle("加入购物车", for: .normal)
+        $0.layer.cornerRadius = 7
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold)
+        $0.clipsToBounds = true
+
+    }
+
+    let submitOrderButton = UIButton().then {
+        $0.backgroundColor = UIColor(hex: 0xEE584A)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitle("立即下单", for: .normal)
+        $0.layer.cornerRadius = 7
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold)
+        $0.clipsToBounds = true
+    }
+
+    let borderLineView = UIView().then {
+        $0.backgroundColor = UIColor.lightGray
+    }
+
+    let horizontalLineView = UIView().then {
+        $0.backgroundColor = UIColor.lightGray
+    }
+
+    let logoImageView = UIImageView().then {
+        $0.image = #imageLiteral(resourceName: "cart")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        automaticallyAdjustsScrollViewInsets = false
         title = "叫花鸡"
-
+        automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
         view.addSubview(scrollView)
@@ -78,7 +121,7 @@ class DetailViewController: UIViewController {
 
         contentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-            make.height.equalTo(view).multipliedBy(2)
+            make.height.equalTo(view).multipliedBy(1.2)
             make.width.equalToSuperview()
         }
 
@@ -113,7 +156,7 @@ class DetailViewController: UIViewController {
         detailView.snp.makeConstraints { (make) in
             make.top.equalTo(descView.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
-            make.height.equalToSuperview()
+            make.height.equalTo(200)
         }
 
         interestingPromptLabel.snp.makeConstraints { (make) in
@@ -134,14 +177,50 @@ class DetailViewController: UIViewController {
             make.right.equalTo(-18)
             make.top.equalTo(lineView.snp.bottom).offset(10)
         }
-    }
 
-    func popViewController(btn: UIButton) {
-        _ = navigationController?.popViewController(animated: true)
+        view.addSubview(functionView)
+        functionView.addSubview(addToCartButton)
+        functionView.addSubview(submitOrderButton)
+        functionView.addSubview(borderLineView)
+        functionView.addSubview(logoImageView)
+        functionView.addSubview(horizontalLineView)
+
+        borderLineView.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        functionView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(60)
+        }
+
+        submitOrderButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 125, height: 40))
+            make.right.equalTo(-20)
+        }
+
+        addToCartButton.snp.makeConstraints { (make) in
+            make.size.equalTo(submitOrderButton)
+            make.right.equalTo(submitOrderButton.snp.left).offset(-15)
+            make.centerY.equalTo(submitOrderButton)
+        }
+
+        logoImageView.snp.makeConstraints { (make) in
+            make.width.equalTo(logoImageView.snp.height)
+            make.left.top.bottom.equalToSuperview()
+        }
+
+        horizontalLineView.snp.makeConstraints { (make) in
+            make.width.equalTo(0.5)
+            make.height.equalTo(logoImageView)
+            make.left.equalTo(logoImageView.snp.right)
+            make.centerY.equalToSuperview()
+        }
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
 }

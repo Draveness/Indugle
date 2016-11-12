@@ -7,22 +7,42 @@
 //
 
 import UIKit
+import WebKit
 
-class SceneViewController: UIViewController {
+class SceneViewController: UIViewController, WKScriptMessageHandler {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let config = WKWebViewConfiguration()
+        config.userContentController.add(self, name: "handleClick")
+        let webView = WKWebView(frame: view.frame, configuration: config)
+        webView.load(URLRequest(url: URL(string: "http://baidu.com")!))
+
+
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 
         let sceneVC = SceneCollectionViewController(collectionViewLayout: SceneFlowLayout())
         addChildViewController(sceneVC)
+
+        view.addSubview(webView)
         view.addSubview(sceneVC.view)
 
+        webView.snp.makeConstraints { (make) in
+            make.top.equalTo(view)
+            make.bottom.equalTo(sceneVC.view.snp.top)
+            make.left.right.equalToSuperview()
+        }
         sceneVC.view.snp.makeConstraints { (make) in
             make.bottom.left.right.equalTo(0)
             make.height.equalTo(174)
         }
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print(message.body)
     }
 }
 
