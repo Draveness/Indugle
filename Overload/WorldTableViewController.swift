@@ -92,12 +92,6 @@ class WorldTableViewCell: UITableViewCell {
         $0.image = #imageLiteral(resourceName: "eagle")
     }
 
-    let averagePriceLabel = UILabel().then {
-        $0.text = "￥20.1"
-        $0.textColor = UIColor.black
-        $0.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-    }
-
     let worldNameLabel = UILabel().then {
         $0.text = "射雕英雄传 · 限时优惠 · 主题餐具"
         $0.textColor = UIColor.black
@@ -123,7 +117,6 @@ class WorldTableViewCell: UITableViewCell {
 
         addSubview(worldImageView)
         addSubview(worldNameLabel)
-        addSubview(averagePriceLabel)
         addSubview(cosmosView)
         addSubview(commentsCountLabel)
 
@@ -133,17 +126,10 @@ class WorldTableViewCell: UITableViewCell {
             make.height.equalTo(210)
         }
 
-        averagePriceLabel.snp.makeConstraints { make in
+        worldNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(worldImageView.snp.bottom).offset(17)
             make.left.equalTo(worldImageView)
             make.height.equalTo(19)
-            make.top.equalTo(worldImageView.snp.bottom).offset(17)
-            make.width.equalTo(80)
-        }
-
-        worldNameLabel.snp.makeConstraints { make in
-            make.lastBaseline.equalTo(averagePriceLabel)
-            make.left.equalTo(averagePriceLabel.snp.right).offset(20)
-            make.height.equalTo(averagePriceLabel)
             make.right.equalTo(worldImageView)
         }
 
