@@ -30,7 +30,7 @@ class MenuCollectionViewController: UICollectionViewController {
         collectionView?.backgroundColor = UIColor.white
         collectionView?.contentInset = UIEdgeInsetsMake(15, 15, 15, 15)
 
-        Alamofire.request("\(baseURL)/hack/web/Event/foodlist.do", method: .get, parameters: ["keyword": "100"], encoding:  URLEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(baseURL)/hack/web/Event/foodlist.do", method: .get, parameters: ["keyword": keyword], encoding:  URLEncoding.default, headers: nil).responseJSON { (response) in
             if let data = response.data {
                 let json = JSON(data: data)
                 let lists = json["M"]["docs"].arrayValue

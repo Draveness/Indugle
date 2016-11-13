@@ -19,7 +19,7 @@ class SceneViewController: UIViewController, WKScriptMessageHandler, WKNavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "射雕英雄世界"
+        title = world.name
 
         let config = WKWebViewConfiguration()
         config.userContentController.add(self, name: "handleClick")
@@ -28,7 +28,7 @@ class SceneViewController: UIViewController, WKScriptMessageHandler, WKNavigatio
         webView.load(URLRequest(url: URL(string: "\(baseURL)/hack/artworld.html#worldid=\(world.id)")!))
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(pushMenuViewController))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(pushMenuViewController))
 
         view.backgroundColor = UIColor(hex: 0xf7f7f7)
 

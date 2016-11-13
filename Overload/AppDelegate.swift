@@ -15,7 +15,7 @@ import SVPullToRefresh
 import DynamicColor
 import Then
 
-let baseURL = "http://172.16.27.29:8080"
+let baseURL = "http://192.168.82.225:8080"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIGestureRecognizerDelegate {

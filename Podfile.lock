@@ -9,6 +9,7 @@ PODS:
   - SnapKit (3.0.2)
   - SVPullToRefresh (0.4.1)
   - SwiftyJSON (3.1.1)
+  - TagListView (1.1.0)
   - Then (2.1.0)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - SnapKit
   - SVPullToRefresh
   - SwiftyJSON
+  - TagListView
   - Then
 
 SPEC CHECKSUMS:
@@ -31,8 +33,9 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  TagListView: d0267a71393f3c73db5c9ea2f979ac1125fcab56
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 18c6726c5e4972ae0dae328a75b03659fc546c27
+PODFILE CHECKSUM: 1b3195cd3027c56c60fda1abe61e99505c841631
 
 COCOAPODS: 1.1.1

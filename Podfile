@@ -11,10 +11,8 @@ target 'Overload' do
   pod 'MBProgressHUD'
   pod 'SVPullToRefresh'
   pod 'DynamicColor', '~> 3.1.0'
-#  pod 'GPUImage'
   pod 'Then'
-
   pod 'Cosmos', '~> 7.0'
-
   pod 'SwiftyJSON'
+  pod 'TagListView'
 end

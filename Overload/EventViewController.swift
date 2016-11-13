@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import TagListView
 
 class EventViewController: UIViewController {
 
@@ -21,8 +22,8 @@ class EventViewController: UIViewController {
     let checkoutButton = UIButton().then {
         $0.backgroundColor = UIColor(hex: 0x00AF9E)
         $0.setTitleColor(UIColor.white, for: .normal)
-        $0.setTitle("去下单", for: .normal)
-        $0.layer.cornerRadius = 7
+        $0.setTitle("相关美食", for: .normal)
+//        $0.layer.cornerRadius = 7
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold)
         $0.clipsToBounds = true
     }
@@ -54,6 +55,35 @@ class EventViewController: UIViewController {
         $0.numberOfLines = 0
     }
 
+    let keywordPromptLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
+        $0.text = "关键字"
+        $0.textColor = UIColor.darkGray
+    }
+
+    let keywordlineView = UIView().then {
+        $0.backgroundColor = UIColor.lightGray
+        $0.layer.cornerRadius = 1.5
+        $0.clipsToBounds = true
+    }
+
+    let keywordLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightThin)
+        $0.text = ""
+        $0.textColor = UIColor.lightGray.darkened()
+        $0.numberOfLines = 0
+    }
+
+    let tagListView = TagListView().then {
+        $0.textFont = UIFont.systemFont(ofSize: 14, weight: UIFontWeightUltraLight)
+        $0.cornerRadius = 10.0
+        $0.alignment = .center
+        $0.paddingY = 5
+        $0.paddingX = 12
+        $0.marginY = 7
+        $0.marginX = 7
+    }
+
     var event: Event!
 
     override func viewDidLoad() {
@@ -66,6 +96,10 @@ class EventViewController: UIViewController {
         let player = AVPlayer(url: event.videoURL)
         let playerController = AVPlayerViewController()
 
+        event.keyword.components(separatedBy: ",").forEach { keyword in
+            tagListView.addTag(keyword)
+        }
+
         playerController.player = player
         addChildViewController(playerController)
 
@@ -75,6 +109,10 @@ class EventViewController: UIViewController {
         detailView.addSubview(introPromptLabel)
         detailView.addSubview(lineView)
         detailView.addSubview(introLabel)
+        detailView.addSubview(keywordPromptLabel)
+        detailView.addSubview(keywordlineView)
+        detailView.addSubview(keywordLabel)
+        detailView.addSubview(tagListView)
 
         view.addSubview(functionView)
         functionView.addSubview(checkoutButton)
@@ -83,8 +121,8 @@ class EventViewController: UIViewController {
         playerController.view.frame = self.view.frame
 
         playerController.view.snp.makeConstraints { (make) in
-            make.left.top.equalTo(25)
-            make.right.equalTo(-25)
+            make.left.top.equalToSuperview()
+            make.right.equalToSuperview()
             make.height.equalTo(210)
         }
 
@@ -95,7 +133,8 @@ class EventViewController: UIViewController {
 
         checkoutButton.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 200, height: 40))
+//            make.size.equalTo(CGSize(width: 200, height: 40))
+            make.size.equalToSuperview()
         }
 
         borderLineView.snp.makeConstraints { (make) in
@@ -106,7 +145,7 @@ class EventViewController: UIViewController {
         detailView.snp.makeConstraints { (make) in
             make.top.equalTo(playerController.view.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
-            make.height.equalTo(400)
+            make.bottom.equalTo(functionView.snp.top)
         }
 
         introPromptLabel.snp.makeConstraints { (make) in
@@ -126,6 +165,33 @@ class EventViewController: UIViewController {
             make.left.equalTo(18)
             make.right.equalTo(-18)
             make.top.equalTo(lineView.snp.bottom).offset(15)
+        }
+
+        keywordPromptLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(introLabel.snp.bottom).offset(14)
+        }
+
+        keywordlineView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(keywordPromptLabel.snp.bottom).offset(9)
+            make.height.equalTo(3)
+            make.width.equalTo(keywordPromptLabel)
+        }
+
+        keywordLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(18)
+            make.right.equalTo(-18)
+            make.top.equalTo(keywordlineView.snp.bottom).offset(15)
+        }
+
+        tagListView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(18)
+            make.right.equalTo(-18)
+            make.top.equalTo(keywordlineView.snp.bottom).offset(15)
+            make.height.equalTo(70)
         }
 
         checkoutButton.addTarget(self, action: #selector(pushMenuViewController), for: .touchUpInside)
